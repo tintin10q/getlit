@@ -2,15 +2,29 @@
   "name": "The THC Edibles Calculator",
   "short_name": "Edibles Calculator",
   "start_url": ".",
+  "scope": ".",
   "display": "standalone",
-  "background_color": "#fdfdfd",
+  "lang": "en",
+  "background_color": "#523C60",
   "theme_color": "#523C60",
   "orientation": "portrait-primary",
+  "categories": ["food", "productivity", "calculator", "tool"],
+  "screenshots" : [
+    {
+      "src": "highscreenshot.webp",
+      "sizes": "604x921",
+      "type": "image/webp"
+    },
+    {
+      "src": "widescreenshot.webp",
+      "sizes": "1920x943",
+      "type": "image/webp"
+    }
+  ],
   "icons": [
     {
       "src": "brownie.svg",
-      "purpose": "maskable any",
-      "sizes": "48x48 72x72 96x96 128x128 256x256 512x512 1024x1024",
+      "sizes": "512x512",
       "type": "image/svg+xml"
     },
     {
