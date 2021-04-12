@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="description" content="The THC edible calculator. Stop guessing about your amounts :)">
+      <meta name="keywords" content="Edibles, Calculator, Weed">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="brownee.svg" type="image/x-icon">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <title>The THC edible calculator</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+      <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@500&display=swap" rel="stylesheet">
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-H6EL1VS6MG"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'G-H6EL1VS6MG');
+      </script>
+   </head>
+   <body style="background-size:cover; background-color:#523C60; color:aliceblue; font-weight:normal; font-family: 'Vollkorn', serif; background-image: url('browneebackground.webp.webp');">
+      <div class="container">
+         <br><br>
+         <h1 class="text-center">
+         The THC Edibles Calculator</h2>
+         <form >
+            <div style="background-color: rgba(57,30,18,0.6);; background;border-radius:2ch; " class="p-3">
+               <div class="row" >
+                  <div class="form-group col">
+                     <label for="weedGrams">How many grams of Weed do you want to use?</label>
+                     <input required oninput="getlit();" type="number" step=0.1 class="form-control" id="weedGrams" aria-describedby="weedGramsDescription" placeholder="Enter grams">
+                     <!-- <small id="weedGramsDescription" class="form-text text-muted">Maybe like 2g?</small> -->
+                  </div>
+                  <div class="form-group col">
+                     <label for="weedthc">What THC % level does it have?</label>
+                     <input type="number" oninput="getlit();" min=0 max=100 class="form-control" id="weedthc"  aria-describedby="weedthcDescription" placeholder="% of THC">
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="form-group col-md">
+                     <label class="mt-2" for="serving">How much butter do you want to use/infuse?</label>
+                     <input required type="number" oninput="getlit();" class="form-control " id="serving" placeholder="How much x are you going to infuse?">
+                  </div>
+                  <div class="form-group col-md">
+                     <label class="mt-2" for="servingrecpipy">How much butter does your recipe require?</label>
+                     <input required type="number" oninput="getlit();" class="form-control" id="servingrecpipy" placeholder="Amount of butter"
+                        aria-describedby="servingrecpipyDescription">
+                  </div>
+                  <div class="form-group col-md">
+                     <label class="mt-2" for="servingfromrecpipy">How many edibles of the same size do you want?</label>
+                     <input required type="number" oninput="getlit();" class="form-control" id="servingfromrecpipy" placeholder="Amount of brownies"
+                        aria-describedby="servingfromrecpipyDescription">
+                     <!-- <small id="servingfromrecpipyDescription" class="form-text text-muted">A theespoon is 5mg</small> -->
+                  </div>
+               </div>
+            </div>
+            <!-- <br> -->
+            <!-- <button type="button" style="background-color: rgb(172, 48, 17); font-weight: bold;" class="btn  col-12 pt-2 pb-2" onclick="calculate();">Calculate </button> -->
+            <br>
+            <div style="background-color: rgba(55,98,11,0.6); background;border-radius:2ch; " class="p-3">
+               <div class="row" >
+                  <div class="form-group col-sm">
+                     <label for="Output3">Total THC mg in One edible serving:</label>
+                     <input type="text" disabled class="form-control" id="Output3" placeholder="Not everything is filled in yet" aria-describedby="Output3Description">
+                     <small id="Output3Description" class="form-text" style="color:white; ">This is what you probably came here for</small>
+                  </div>
+                  <div class="form-group col-sm">
+                     <label for="Output2">Total THC mg in whole edible:</label>
+                     <input type="text" disabled class="form-control" id="Output2" placeholder="Not everything is filled in yet" aria-describedby="Output2Description">
+                     <small id="Output2Description" class="form-text" style="color:white; ">This is how much THC you would eat if you would eat everything you are going to make</small>
+                  </div>
+                  <div class="form-group col-sm">
+                     <label for="Output">THC mg per servings of Infusee:</label>
+                     <input type="text" disabled class="form-control" id="Output" placeholder="Not everything is filled in yet" aria-describedby="OutputDescription">
+                     <small id="OutputDescription" class="form-text " style="color:white;">A gram of butter has ↑ mg of THC</small>
+                  </div>
+               </div>
+            </div>
+            <br>
+            <div style="background-color: rgba(57,30,18,0.6); background;border-radius:2ch; " class="p-3 ">
+               <!-- <div class="form-check"> -->
+               <span class="mt-4" style="font-weight:bolder;">How lit do you want to become?</span> (This changes the grams of weed you use to get a certain mg of thc per serving)
+               <br>
+               <input type="radio" name="lit" value="0" class="form-check-input" id="lit1" onchange="calculateRadio();" > <label for="lit1"> Lit </label>
+               <br>
+               <!-- aria-describedby="Lit1d" -->
+               <!-- <small id="Lit1d" name="lit" value="Stoned" class="form-text text-muted">Lit</small> -->
+               <input type="radio" name="lit"  onchange="calculateRadio();"value="1"  class="form-check-input" id="lit2" onchange="calculateRadio(); return false;"> <label for="lit2"> Stoned </label>
+               <br>
+               <input type="radio" name="lit"  onchange="calculateRadio();"value="2"  class="form-check-input" id="lit5"> <label for="lit5"  onchange="calculateRadio(); return false;"> As stoned as a schrimp </label>
+               <br>
+               <input type="radio" name="lit"  onchange="calculateRadio();"value="3"  class="form-check-input" id="lit3"  onchange="calculateRadio(); return false;"> <label for="lit3"> Blazing </label>
+               <br>
+               <input type="radio" name="lit" onchange="calculateRadio();" value="4"  class="form-check-input" id="lit4"  onchange="calculateRadio(); return false;"> <label for="lit4"> Fucked up </label>
+               <br>
+               <input type="radio"  name="lit"  onchange="calculateRadio();"value="5"  class="form-check-input" onchange="calculateRadio();"> <label for="lit6"> ✨🤯</label>
+            </div>
+            <!-- </div> -->
+         </form>
+
+        <span style="font-size: small; color: darkgray;" class="mr-2">If you have any ideas on how to improve this page <a style="color: darkgray;" href="https://forms.gle/obyLRM6vHNSYR67G9" title="Google feedback form">then you can leave it here</a>.</span>
+
+         <span style="font-size: small; color: darkgray;">Favicon made by <a style="color: darkgray;" href="https://www.freepik.com" title="Freepik">Freepik</a> from <a style="color: darkgray;" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></span>
+
+      </div>
+      <script>
+         function getlit() {
+         
+             if (allFilledIn()) {
+                 calculate() 
+             }
+         }
+         
+         function allFilledIn() {
+             const grams = document.getElementById("weedGrams").value;
+             const thc = document.getElementById("weedthc").value;
+             const serving = document.getElementById("serving").value;
+             const servinginrecpy = document.getElementById("servingrecpipy").value;
+             const servingfromrecpipy = document.getElementById("servingfromrecpipy").value;
+         
+             const result = grams && thc && serving && servinginrecpy &&servingfromrecpipy;
+             
+             if (result) {
+                 return result
+             } else {
+                 document.getElementById("Output").value = "";
+                 document.getElementById("Output2").value = "";
+                 document.getElementById("Output3").value = "";
+                 return false;
+             } 
+         
+         }
+         
+         function calculate() {
+             const grams = document.getElementById("weedGrams").value;
+             const thc = document.getElementById("weedthc").value;
+             const serving = document.getElementById("serving").value;
+             const servinginrecpy = document.getElementById("servingrecpipy").value;
+             const servingfromrecpipy = document.getElementById("servingfromrecpipy").value;
+             result = ((grams * 1000)  * thc / 100) / serving;
+             document.getElementById("Output").value = Math.round(result*1000)/1000; // Round too 3 decimals
+             document.getElementById("Output2").value = result*servinginrecpy;
+             document.getElementById("Output3").value = result*servinginrecpy/servingfromrecpipy;
+         }
+         function calculateRadio() {
+             const thc = document.getElementById("weedthc").value;
+             const serving = document.getElementById("serving").value;
+             const servinginrecpy = document.getElementById("servingrecpipy").value;
+             const servingfromrecpipy = document.getElementById("servingfromrecpipy").value;
+             const targetTHC = 10 + 5 * document.querySelector('input[name="lit"]:checked').value; // Every level is + 5 thc mg starting with 10
+             const result = 1000 / 100 * thc / serving * servinginrecpy / servingfromrecpipy;
+             const grams = targetTHC/result;
+             console.table({thc, serving,servinginrecpy,servingfromrecpipy, targetTHC, `Grams for ${targetTHC}mg THC`:grams})         
+             document.getElementById("weedGrams").value = targetTHC/result;
+             if (allFilledIn()) {
+                 calculate();
+             } 
+             
+         }
+         
+      </script>
+   </body>
+</html>
