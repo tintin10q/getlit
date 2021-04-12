@@ -9,9 +9,7 @@
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <title>The THC edible calculator</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
       <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@500&display=swap" rel="stylesheet">
-
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-H6EL1VS6MG"></script>
       <script>
@@ -21,11 +19,13 @@
          gtag('config', 'G-H6EL1VS6MG');
       </script>
    </head>
-   <body style="background-size:cover; background-color:#523C60; color:aliceblue; font-weight:normal; font-family: 'Vollkorn', serif; background-image: url('browneebackground.webp.webp');">
+
+   <body style="background-size:cover; background-color:#523C60; color:aliceblue; font-weight:normal; font-family: 'Vollkorn', serif; background-image: url('browneebackground.webp');">
       <div class="container">
          <br><br>
          <h1 class="text-center">
-         The THC Edibles Calculator</h2>
+            The THC Edibles Calculator
+         </h1>
          <form >
             <div style="background-color: rgba(57,30,18,0.6);; background;border-radius:2ch; " class="p-3">
                <div class="row" >
@@ -80,14 +80,11 @@
                </div>
             </div>
             <br>
-            <div style="background-color: rgba(57,30,18,0.6); background;border-radius:2ch; " class="p-3 ">
-               <!-- <div class="form-check"> -->
+            <div style="background-color: rgba(57,30,18,0.6); background;border-radius:2ch; " class="p-3">
                <span class="mt-4" style="font-weight:bolder;">How lit do you want to become?</span> (This changes the grams of weed you use to get a certain mg of thc per serving)
                <br>
                <input type="radio" name="lit" value="0" class="form-check-input" id="lit1" onchange="calculateRadio();" > <label for="lit1"> Lit </label>
                <br>
-               <!-- aria-describedby="Lit1d" -->
-               <!-- <small id="Lit1d" name="lit" value="Stoned" class="form-text text-muted">Lit</small> -->
                <input type="radio" name="lit"  onchange="calculateRadio();"value="1"  class="form-check-input" id="lit2" onchange="calculateRadio(); return false;"> <label for="lit2"> Stoned </label>
                <br>
                <input type="radio" name="lit"  onchange="calculateRadio();"value="2"  class="form-check-input" id="lit5"> <label for="lit5"  onchange="calculateRadio(); return false;"> As stoned as a schrimp </label>
@@ -100,12 +97,10 @@
             </div>
             <!-- </div> -->
          </form>
-
-        <span style="font-size: small; color: darkgray;" class="mr-2">If you have any ideas on how to improve this page <a style="color: darkgray;" href="https://forms.gle/obyLRM6vHNSYR67G9" title="Google feedback form">then you can leave it here</a>.</span>
-
+         <span style="font-size: small; color: darkgray;" class="mr-2">If you have any ideas on how to improve this page <a style="color: darkgray;" href="https://forms.gle/obyLRM6vHNSYR67G9" title="Google feedback form">then you can leave it here</a>.</span>
          <span style="font-size: small; color: darkgray;">Favicon made by <a style="color: darkgray;" href="https://www.freepik.com" title="Freepik">Freepik</a> from <a style="color: darkgray;" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></span>
-
       </div>
+
       <script>
          function getlit() {
          
@@ -141,10 +136,11 @@
              const servinginrecpy = document.getElementById("servingrecpipy").value;
              const servingfromrecpipy = document.getElementById("servingfromrecpipy").value;
              result = ((grams * 1000)  * thc / 100) / serving;
-             document.getElementById("Output").value = Math.round(result*1000)/1000; // Round too 3 decimals
-             document.getElementById("Output2").value = result*servinginrecpy;
-             document.getElementById("Output3").value = result*servinginrecpy/servingfromrecpipy;
+             document.getElementById("Output").value = Math.round(result*100)/100; // Round too 3 decimals
+             document.getElementById("Output2").value = Math.round(result*servinginrecpy*100)/100;
+             document.getElementById("Output3").value = Math.round(result*servinginrecpy/servingfromrecpipy*100)/100;
          }
+
          function calculateRadio() {
              const thc = document.getElementById("weedthc").value;
              const serving = document.getElementById("serving").value;
@@ -153,8 +149,9 @@
              const targetTHC = 10 + 5 * document.querySelector('input[name="lit"]:checked').value; // Every level is + 5 thc mg starting with 10
              const result = 1000 / 100 * thc / serving * servinginrecpy / servingfromrecpipy;
              const grams = targetTHC/result;
-             console.table({thc, serving,servinginrecpy,servingfromrecpipy, targetTHC, `Grams for ${targetTHC}mg THC`:grams})         
-             document.getElementById("weedGrams").value = targetTHC/result;
+             const name = `Grams for ${targetTHC}mg THC`;
+             console.table({thc, serving,servinginrecpy,servingfromrecpipy, targetTHC, name:grams})         
+             document.getElementById("weedGrams").value = Math.round(targetTHC/result*1000)/1000;
              if (allFilledIn()) {
                  calculate();
              } 
