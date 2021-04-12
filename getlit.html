@@ -48,8 +48,7 @@
     </script>
 </head>
 
-<body onload="installServiceWorker();"
-      style="background-size:cover; background-color:#523C60; color:aliceblue; font-weight:normal; font-family: 'Vollkorn', serif; background-image: url('browneebackground.webp');">
+<body style="background-size:cover; background-color:#523C60; color:aliceblue; font-weight:normal; font-family: 'Vollkorn', serif; background-image: url('browneebackground.webp');">
 <div class="container">
     <br><br>
     <h1 class="text-center">
@@ -209,8 +208,7 @@
 
     }
 
-    function installServiceWorker() {
-        console.log("Trying to install service worker")
+
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('/sw.js').then(function (registration) {
@@ -221,10 +219,8 @@
                     console.log('ServiceWorker registration failed: ', err);
                 });
             });
-        } else {
-            console.log("Service workers are not supported by browser")
         }
-    }
+
 
 </script>
 </body>
