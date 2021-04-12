@@ -1,0 +1,16 @@
+{
+  "name": "The THC Edibles Calculator",
+  "short_name": "Edibles Calculator",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fdfdfd",
+  "theme_color": "#523C60",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "brownie.svg",
+      "purpose": "maskable any",
+      "sizes": "48x48 72x72 96x96 128x128 256x256"
+    }
+  ]
+}
