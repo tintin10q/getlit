@@ -152,6 +152,7 @@
 </div>
 
 <script>
+    'use strict'
     function getlit() {
 
         if (allFilledIn()) {
@@ -209,6 +210,7 @@
     }
 
     function installServiceWorker() {
+        console.log("Trying to install service worker")
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('/sw.js').then(function (registration) {

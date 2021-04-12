@@ -1,9 +1,10 @@
-var CACHE_NAME = 'my-site-cache-v1';
+'use strict'
+
+var CACHE_NAME = 'getlit-cache-v1';
 var urlsToCache = [
     '/',
     '/browneebackground.webp',
-    '/styles/main.css',
-    '/script/main.js',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css',
     'https://fonts.googleapis.com/css2?family=Vollkorn:wght@500&display=swap'
 ];
 
