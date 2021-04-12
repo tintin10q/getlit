@@ -10,7 +10,38 @@
     {
       "src": "brownie.svg",
       "purpose": "maskable any",
-      "sizes": "48x48 72x72 96x96 128x128 256x256"
+      "sizes": "48x48 72x72 96x96 128x128 256x256 512x512 1024x1024",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icons/brownie-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/brownie-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/brownie-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/brownie-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/brownie-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/brownie-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
     }
   ]
 }
