@@ -157,7 +157,7 @@
              const result = 1000 / 100 * thc / serving * servinginrecpy / servingfromrecpipy;
              const grams = targetTHC/result;
              const name = `Grams for ${targetTHC}mg THC`;
-             console.table({thc, serving,servinginrecpy,servingfromrecpipy, targetTHC, name:grams})         
+             // console.table({thc, serving,servinginrecpy,servingfromrecpipy, targetTHC, name:grams})         
              document.getElementById("weedGrams").value = Math.round(targetTHC/result*1000)/1000;
              if (allFilledIn()) {
                  calculate();
