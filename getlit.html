@@ -62,7 +62,7 @@
 
 <body style="background-size:cover; background-color:#523C60; color:aliceblue; font-weight:normal; font-family: 'Vollkorn', serif; background-image: url('browneebackground.webp');">
 <div class="container">
-    <br><br>
+    <br>
     <h1 class="text-center">
         The THC Edibles Calculator
     </h1>
@@ -76,7 +76,7 @@
                     <!-- <small id="weedGramsDescription" class="form-text text-muted">Maybe like 2g?</small> -->
                 </div>
                 <div class="form-group col">
-                    <label for="weedthc">What THC % level does it have?</label>
+                    <label for="weedthc">What THC % level is the weed?</label>
                     <input aria-describedby="weedthcDescription" class="form-control" id="weedthc" max=100 min=0 oninput="getlit();"
                            placeholder="% of THC" type="number">
                 </div>
@@ -107,21 +107,21 @@
         <br>
         <div class="p-3" style="background-color: rgba(55,98,11,0.6); border-radius:2ch; ">
             <div class="row">
-                <div class="form-group col-sm">
+                <div class="form-group col-md">
                     <label for="Output3">Total THC mg in One edible serving:</label>
                     <input aria-describedby="Output3Description" class="form-control" disabled id="Output3"
                            placeholder="Not everything is filled in yet" type="text">
                     <small class="form-text" id="Output3Description" style="color:white; ">This is what you probably
                         came here for</small>
                 </div>
-                <div class="form-group col-sm">
+                <div class="form-group col-md">
                     <label for="Output2">Total THC mg in whole edible:</label>
                     <input aria-describedby="Output2Description" class="form-control" disabled id="Output2"
                            placeholder="Not everything is filled in yet" type="text">
                     <small class="form-text" id="Output2Description" style="color:white; ">This is how much THC you
                         would eat if you would eat everything you are going to make</small>
                 </div>
-                <div class="form-group col-sm">
+                <div class="form-group col-md">
                     <label for="Output">THC mg per servings of Infusee:</label>
                     <input aria-describedby="OutputDescription" class="form-control" disabled id="Output"
                            placeholder="Not everything is filled in yet" type="text">
@@ -237,16 +237,16 @@
 </script>
 <style>
     label{
-        /*margin-top: 10px;*/
-        /*margin-left: 11%;*/
         color: white;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        /*width: 100px;*/
         cursor: pointer;
-
+        overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap; /* This fixed the label being too long pushing the input down problem also makes things generally more responsive in my opinion, You I think only need the last one 13-apr-2021*/
     }
+    
 </style>
 </body>
 </html>
