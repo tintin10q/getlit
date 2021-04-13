@@ -1,5 +1,5 @@
 {
-  "name": "THC Edibles Calculator",
+  "name": "THCalculator",
   "short_name": "THCalculator",
   "start_url": ".",
   "scope": ".",
@@ -30,11 +30,6 @@
             "src": "/icons/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
-        },
-        {
-          "src": "brownie.svg",
-          "sizes": "512x512",
-          "type": "image/svg+xml"
         },
         {
           "src": "icons/brownie-512x512.png",
