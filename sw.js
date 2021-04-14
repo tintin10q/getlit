@@ -52,9 +52,8 @@ self.addEventListener('fetch', function(event) {
 
 // Make sure you only have the v2 cache
 self.addEventListener('activate', function(event) {
-
+    console.log("Activated service worker")
   var cacheAllowlist = ['getlit-cache-v2'];
-
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
       return Promise.all(
