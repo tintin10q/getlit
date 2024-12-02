@@ -1,11 +1,10 @@
 'use strict'
 
-var CACHE_NAME = 'getlit-cache-v2';
+var CACHE_NAME = 'getlit-cache-v3';
 var urlsToCache = [
     '/',
     '/browneebackground.webp',
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css',
-    'https://fonts.googleapis.com/css2?family=Vollkorn:wght@500&display=swap'
+	'https://fonts.googleapis.com/css2?family=Vollkorn&display=swap&text=abcdefghijklmnoprstuvwxyzABCEFHIMNOTSLW✨🤯()%:?↑/. '
 ];
 
 self.addEventListener('install', function(event) {
@@ -58,7 +57,7 @@ self.addEventListener('activate', function(event) {
     caches.keys().then(function(cacheNames) {
       return Promise.all(
         cacheNames.map(function(cacheName) {
-          if (cacheAllowlist.indexOf(cacheName) === -1) { 
+          if (cacheAllowlist.indexOf(cacheName) === -1) {
             return caches.delete(cacheName);
           }
         })
