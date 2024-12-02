@@ -1,11 +1,11 @@
 'use strict'
 
-var CACHE_NAME = 'getlit-cache-v3';
+var CACHE_NAME = 'getlit-cache-v4';
 var urlsToCache = [
-    '/',
+	'/',
 	'/brownie.png',
-    '/browneebackground.webp',
-	'https://fonts.googleapis.com/css2?family=Vollkorn&display=swap&text=abcdefghijklmnoprstuvwxyzABCEFHIMNOTSLW✨🤯()%:?↑/. '
+	'/browneebackground.webp',
+	'https://fonts.googleapis.com/css2?family=Vollkorn&display=swap&text=abcdefghijklmnoprstuvwxyzABCEFHIMNOTSLW%E2%9C%A8%F0%9F%A4%AF%28%29%25%3A%3F%E2%86%91%2F.%20'
 ];
 
 self.addEventListener('install', function(event) {
