@@ -1,11 +1,11 @@
 'use strict'
 
-var CACHE_NAME = 'getlit-cache-v4';
-var urlsToCache = [
+const CACHE_NAME = 'getlit-cache-v4';
+const urlsToCache = [
 	'/',
 	'/brownie.png',
 	'/browneebackground.webp',
-	'https://fonts.googleapis.com/css2?family=Vollkorn&display=swap&text=abcdefghijklmnoprstuvwxyzABCEFHIMNOTSLW%E2%9C%A8%F0%9F%A4%AF%28%29%25%3A%3F%E2%86%91%2F.%20'
+	'https://fonts.googleapis.com/css2?family=Vollkorn&display=swap&text=0123456789abcdefghijklmnopqrstuvwxyzABCEFHIMNOTSLW%E2%9C%A8%F0%9F%A4%AF%28%29%25%3A%3F%E2%86%91%2F.%20%2C',
 ];
 
 self.addEventListener('install', function(event) {
@@ -28,20 +28,15 @@ self.addEventListener('fetch', function(event) {
           return response;
         }
 
-        return fetch(event.request).then( // then on a return that is pretty cool
-          function(response) {
+        return fetch(event.request).then((response) => {
+
             // Check if we received a valid response
-            if(!response || response.status !== 200 /*|| response.type !== 'basic'*/) {
-              return response;
-            }
+            if (!response || response.status !== 200 || !event.request.url.startsWith('http')) {return response;}
 
             // Clone because you can only consume a stream once
-            var responseToCache = response.clone();
+            const responseToCache = response.clone();
 
-            caches.open(CACHE_NAME)
-              .then(function(cache) {
-                cache.put(event.request, responseToCache);
-              });
+            caches.open(CACHE_NAME).then(cache => {cache.put(event.request, responseToCache);});
 
             return response;
           }
@@ -50,16 +45,15 @@ self.addEventListener('fetch', function(event) {
     );
 });
 
-// Make sure you only have the v2 cache
+// Make sure you only have the latest cache
 self.addEventListener('activate', function(event) {
     console.log("Activated service worker")
-  var cacheAllowlist = ['getlit-cache-v2'];
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.map(function(cacheName) {
+    const cacheAllowlist = [CACHE_NAME];
+    event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(cacheNames.map((cacheName) => {
           if (cacheAllowlist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
+              return caches.delete(cacheName);
           }
         })
       );
