@@ -47,27 +47,26 @@
 	<!-- Preload the background image -->
 	<link href="browneebackground.webp" rel="preload" as="image"> 
 
-    <!-- Font + Bootstrap + Google Analytics -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@500&display=swap" rel="stylesheet">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H6EL1VS6MG"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+    <!-- Font (only fetch required glyphs) + Google Analytics -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap&text=abcdefghijklmnoprstuvwxyzABCEFHIMNOTSLW✨🤯()%: ?↑" rel="stylesheet">
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-H6EL1VS6MG"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+		function gtag() {
+			dataLayer.push(arguments);
+		}
 
-        gtag('js', new Date());
-        gtag('config', 'G-H6EL1VS6MG');
-    </script>
+		gtag('js', new Date());
+		gtag('config', 'G-H6EL1VS6MG');
+	</script>
 </head>
 
-<body style="background-size:cover; background-color:#523C60; color:aliceblue; font-weight:normal; font-family: 'Vollkorn', serif; background-image: url('browneebackground.webp');">
+<body style="background-size:cover; background-color:#523C60; color:aliceblue; font-weight:400; font-optical-sizing: auto; font-family: 'Vollkorn', serif; font-style: normal; background-image: url('browneebackground.webp');">
 <div class="container">
-    <header><br><h1 class="text-center">The THC Edibles Calculator</h1></header>
+    <header><br><h1 style="text-align:center">The THC Edibles Calculator</h1></header>
     <content>
     <form>
         <div class="p-3" style="background-color: rgba(57,30,18,0.6); border-radius:2ch;">
@@ -245,16 +244,63 @@
 
 </script>
 <style>
-    label{
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        cursor: pointer;
-        overflow: hidden;
-	    text-overflow: ellipsis;
-	    white-space: nowrap; /* This fixed the label being too long pushing the input down problem also makes things generally more responsive in my opinion, You I think only need the last one 13-apr-2021*/
-    }
+
+   /*! CSS Used from: https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css */
+*,::after,::before{box-sizing:border-box;}
+body{margin:0;font-family:var(--bs-font-sans-serif);font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;}
+h1{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2;}
+h1{font-size:calc(1.375rem + 1.5vw);}
+@media (min-width:1200px){
+h1{font-size:2.5rem;}
+}
+small{font-size:.875em;}
+a{color:#0d6efd;text-decoration:underline;}
+a:hover{color:#0a58ca;}
+label{display:inline-block;}
+input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit;}
+.container{width:100%;padding-right:var(--bs-gutter-x,.75rem);padding-left:var(--bs-gutter-x,.75rem);margin-right:auto;margin-left:auto;}
+@media (min-width:576px){
+.container{max-width:540px;}
+}
+@media (min-width:768px){
+.container{max-width:720px;}
+}
+@media (min-width:992px){
+.container{max-width:960px;}
+}
+@media (min-width:1200px){
+.container{max-width:1140px;}
+}
+@media (min-width:1400px){
+.container{max-width:1320px;}
+}
+.row{--bs-gutter-x:1.5rem;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-top:calc(var(--bs-gutter-y) * -1);margin-right:calc(var(--bs-gutter-x)/ -2);margin-left:calc(var(--bs-gutter-x)/ -2);}
+.row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:calc(var(--bs-gutter-x)/ 2);padding-left:calc(var(--bs-gutter-x)/ 2);margin-top:var(--bs-gutter-y);}
+.col{flex:1 0 0%;}
+@media (min-width:768px){
+.col-md{flex:1 0 0%;}
+}
+.form-text{margin-top:.25rem;font-size:.875em;color:#6c757d;}
+.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;-webkit-appearance:none;-moz-appearance:none;appearance:none;border-radius:.25rem;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+@media (prefers-reduced-motion:reduce){
+.form-control{transition:none;}
+}
+.form-control:focus{color:#212529;background-color:#fff;border-color:#86b7fe;outline:0;box-shadow:0 0 0 .25rem rgba(13,110,253,.25);}
+.form-control::placeholder{color:#6c757d;opacity:1;}
+.form-control:disabled{background-color:#e9ecef;opacity:1;}
+.form-check-input{width:1em;height:1em;margin-top:.25em;vertical-align:top;background-color:#fff;background-repeat:no-repeat;background-position:center;background-size:contain;border:1px solid rgba(0,0,0,.25);-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-print-color-adjust:exact;color-adjust:exact;}
+.form-check-input[type=radio]{border-radius:50%;}
+.form-check-input:active{filter:brightness(90%);}
+.form-check-input:focus{border-color:#86b7fe;outline:0;box-shadow:0 0 0 .25rem rgba(13,110,253,.25);}
+.form-check-input:checked{background-color:#0d6efd;border-color:#0d6efd;}
+.form-check-input:checked[type=radio]{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");}
+.form-check-input:disabled{pointer-events:none;filter:none;opacity:.5;}
+.mt-2{margin-top:.5rem!important;}
+.mt-4{margin-top:1.5rem!important;}
+.p-3{padding:1rem!important;}
+.text-center{text-align:center!important;}
+/*! CSS Used from: Embedded */
+label{color:white;text-align:center;text-decoration:none;display:inline-block;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;} 
     
 </style>
 </body>
