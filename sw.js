@@ -3,6 +3,7 @@
 var CACHE_NAME = 'getlit-cache-v3';
 var urlsToCache = [
     '/',
+	'/brownie.png',
     '/browneebackground.webp',
 	'https://fonts.googleapis.com/css2?family=Vollkorn&display=swap&text=abcdefghijklmnoprstuvwxyzABCEFHIMNOTSLW✨🤯()%:?↑/. '
 ];
