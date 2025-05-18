@@ -165,48 +165,25 @@
 </div>
 
 <script>
-    'use strict'
-    function getlit() {if (allFilledIn()) {calculate()}}
-    function allFilledIn() {
-        const grams = document.getElementById("weedGrams").value;
-        const thc = document.getElementById("weedthc").value;
-        const serving = document.getElementById("serving").value;
-        const servinginrecpy = document.getElementById("servingrecpipy").value;
-        const servingfromrecpipy = document.getElementById("servingfromrecpipy").value;
-
-        const result = grams && thc && serving && servinginrecpy && servingfromrecpipy;
-
-        if (result) {
-            return result
-        } else {
-            document.getElementById("Output").value = "";
-            document.getElementById("Output2").value = "";
-            document.getElementById("Output3").value = "";
-            return false;
-        }
-
+    function resetOutput() {
+        Output.value = "";
+        Output2.value = "";
+        Output3.value = "";
     }
+    function allFilledIn() {return weedGrams.value && weedthc.value && serving.value && servingrecpipy.value && servingfromrecpipy.value;}
     // Round to 3 decimals
     function round(x) {return Math.round(x * 100) / 100}
     function calculate() {
-        const grams = document.getElementById("weedGrams").value;
-        const thc = document.getElementById("weedthc").value;
-        const serving = document.getElementById("serving").value;
-        const servinginrecpy = document.getElementById("servingrecpipy").value;
-        const servingfromrecpipy = document.getElementById("servingfromrecpipy").value;
-        const result = ((grams * 1000) * thc / 100) / serving;
-        document.getElementById("Output").value = round(result)
-        document.getElementById("Output2").value = round(result * servinginrecpy);
-        document.getElementById("Output3").value = round(result * servinginrecpy / servingfromrecpipy);
+        const result = ((weedGrams.value * 1000) * weedthc.value / 100) / serving.value;
+        Output.value = round(result)
+        Output2.value = round(result * servingrecpipy.value);
+        Output3.value = round(result * servingrecpipy.value / servingfromrecpipy.value);
     }
+    function getlit() { if (allFilledIn()) {calculate()} else {resetOutput()} }
     function calculateRadio() {
-        const thc = document.getElementById("weedthc").value;
-        const serving = document.getElementById("serving").value;
-        const servinginrecpy = document.getElementById("servingrecpipy").value;
-        const servingfromrecpipy = document.getElementById("servingfromrecpipy").value;
         const targetTHC = 10 + 5 * document.querySelector('input[name="lit"]:checked').value; // Every level is + 5 thc mg starting with 10
-        const result = 1000 / 100 * thc / serving * servinginrecpy / servingfromrecpipy;
-        document.getElementById("weedGrams").value = Math.round(targetTHC / result * 1000) / 1000;
+        const result = 1000 / 100 * weedthc.value / serving.value * servingrecpipy.value / servingfromrecpipy.value;
+        weedGrams.value = Math.round(targetTHC / result * 1000) / 1000;
         if (allFilledIn()) { calculate(); }
     }
 
